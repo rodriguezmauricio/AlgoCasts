@@ -7,14 +7,33 @@
 //   capitalize('a lazy fox') --> 'A Lazy Fox'
 //   capitalize('look, it is working!') --> 'Look, It Is Working!'
 
+//HEADER: Solution 1
+// function capitalize(str) {
+//   let arrStr = str.split(" ");
+
+//   const newArr = arrStr.map((word) => {
+//     return word[0].toUpperCase().concat(word.slice(1));
+//   });
+
+//   return newArr.join(" ");
+// }
+
 function capitalize(str) {
-  let arrStr = str.split(" ");
+  let result = "";
 
-  const newArr = arrStr.map((word) => {
-    return word[0].toUpperCase().concat(word.slice(1));
-  });
+  let splitted = str.split("");
 
-  return newArr.join(" ");
+  for (let char in splitted) {
+    if (result === "") {
+      result = splitted[char].toUpperCase();
+    } else if (splitted[char - 1] === " ") {
+      result += splitted[char].toUpperCase();
+    } else {
+      result += splitted[char];
+    }
+  }
+
+  return result;
 }
 
 console.log(capitalize("a big fucking ass"));
